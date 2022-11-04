@@ -1,13 +1,15 @@
-package com.api.mapeamento.models;
+package com.api.relacionamento.models;
 
 
-import com.api.mapeamento.enums.PessoaStatus;
+import com.api.relacionamento.enums.PessoaStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Data
 @Entity
 @Table(name = "TB_PESSOA")
 public class PessoaModel {
@@ -21,7 +23,7 @@ public class PessoaModel {
     @Column(nullable = false, length = 150)
     private String nome;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique = true)
     private String email;
 
     @Column(nullable = false)
