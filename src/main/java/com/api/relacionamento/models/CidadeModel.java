@@ -1,8 +1,10 @@
 package com.api.relacionamento.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,4 +17,11 @@ public class CidadeModel {
 
     private String nome;
 
+    @ManyToOne
+    @JoinColumn(name = "ESTADO")
+   private  EstadoModel estado;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "cidade")
+    private List<PessoaModel> pessoas;
 }
