@@ -7,6 +7,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -42,5 +43,9 @@ public class PessoaModel {
 
     @ManyToOne
     private CidadeModel cidade;
+
+    @ManyToMany
+    @JoinTable(name = "POESSOA_CARGO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "cargo_id"))
+    private List<CargoModel> cargos;
 
 }
